@@ -1,6 +1,7 @@
 package br.com.example.javaee.chat.encoders;
 
 import br.com.example.javaee.chat.model.ChatMessage;
+import com.google.gson.Gson;
 
 import javax.json.Json;
 import javax.websocket.EncodeException;
@@ -18,10 +19,12 @@ public class ChatMessageEncoder implements Encoder.Text<ChatMessage> {
 
     @Override
     public String encode(final ChatMessage chatMessage) throws EncodeException {
-        return Json.createObjectBuilder()
+        Gson gson = new Gson();
+        return gson.toJson(chatMessage);
+        /*return Json.createObjectBuilder()
                 .add("message", chatMessage.getMessage())
                 .add("sender", chatMessage.getSender())
-                .add("received", chatMessage.getReceived().toString()).build()
-                .toString();
+                //.add("received", chatMessage.getReceived().toString()).build()
+                .toString();*/
     }
 }

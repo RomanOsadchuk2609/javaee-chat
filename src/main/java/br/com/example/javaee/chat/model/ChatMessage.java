@@ -5,15 +5,12 @@ import java.util.Date;
 public class ChatMessage {
     private String message;
     private String sender;
-    private Date received;
-
     public ChatMessage() {
     }
 
-    public ChatMessage(String message, String sender, Date received) {
+    public ChatMessage(String message, String sender) {
         this.message = message;
         this.sender = sender;
-        this.received = received;
     }
 
     public String getMessage() {
@@ -32,20 +29,11 @@ public class ChatMessage {
         this.sender = sender;
     }
 
-    public Date getReceived() {
-        return received;
-    }
-
-    public void setReceived(Date received) {
-        this.received = received;
-    }
-
     @Override
     public String toString() {
         return "ChatMessage{" +
                 "message='" + message + '\'' +
                 ", sender='" + sender + '\'' +
-                ", received=" + received +
                 '}';
     }
 
@@ -58,7 +46,7 @@ public class ChatMessage {
 
         if (message != null ? !message.equals(that.message) : that.message != null) return false;
         if (sender != null ? !sender.equals(that.sender) : that.sender != null) return false;
-        return !(received != null ? !received.equals(that.received) : that.received != null);
+        return true;
 
     }
 
@@ -66,7 +54,6 @@ public class ChatMessage {
     public int hashCode() {
         int result = message != null ? message.hashCode() : 0;
         result = 31 * result + (sender != null ? sender.hashCode() : 0);
-        result = 31 * result + (received != null ? received.hashCode() : 0);
         return result;
     }
 }

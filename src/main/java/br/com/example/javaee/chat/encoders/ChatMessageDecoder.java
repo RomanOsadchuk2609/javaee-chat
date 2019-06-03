@@ -1,6 +1,7 @@
 package br.com.example.javaee.chat.encoders;
 
 import br.com.example.javaee.chat.model.ChatMessage;
+import com.google.gson.Gson;
 
 import java.io.StringReader;
 import java.util.Date;
@@ -23,11 +24,11 @@ public class ChatMessageDecoder implements Decoder.Text<ChatMessage> {
     @Override
     public ChatMessage decode(final String textMessage) throws DecodeException {
         ChatMessage chatMessage = new ChatMessage();
-        JsonObject obj = Json.createReader(new StringReader(textMessage))
-                .readObject();
-        chatMessage.setMessage(obj.getString("message"));
-        chatMessage.setSender(obj.getString("sender"));
-        chatMessage.setReceived(new Date());
+       /* JsonObject obj = Json.createReader(new StringReader(textMessage))
+                .readObject();*/
+        Gson gson = new Gson();
+        chatMessage = gson.fromJson(textMessage,ChatMessage.class);
+        //chatMessage.setReceived(new Date());
         return chatMessage;
     }
 
