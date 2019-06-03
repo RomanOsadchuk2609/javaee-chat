@@ -24,11 +24,8 @@ public class ChatMessageDecoder implements Decoder.Text<ChatMessage> {
     @Override
     public ChatMessage decode(final String textMessage) throws DecodeException {
         ChatMessage chatMessage = new ChatMessage();
-       /* JsonObject obj = Json.createReader(new StringReader(textMessage))
-                .readObject();*/
         Gson gson = new Gson();
         chatMessage = gson.fromJson(textMessage,ChatMessage.class);
-        //chatMessage.setReceived(new Date());
         return chatMessage;
     }
 

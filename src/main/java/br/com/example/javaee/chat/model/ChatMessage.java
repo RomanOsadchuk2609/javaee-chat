@@ -5,6 +5,7 @@ import java.util.Date;
 public class ChatMessage {
     private String message;
     private String sender;
+
     public ChatMessage() {
     }
 
@@ -44,16 +45,15 @@ public class ChatMessage {
 
         ChatMessage that = (ChatMessage) o;
 
-        if (message != null ? !message.equals(that.message) : that.message != null) return false;
-        if (sender != null ? !sender.equals(that.sender) : that.sender != null) return false;
-        return true;
+        if (getMessage() != null ? !getMessage().equals(that.getMessage()) : that.getMessage() != null) return false;
+        return getSender() != null ? getSender().equals(that.getSender()) : that.getSender() == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = message != null ? message.hashCode() : 0;
-        result = 31 * result + (sender != null ? sender.hashCode() : 0);
+        int result = getMessage() != null ? getMessage().hashCode() : 0;
+        result = 31 * result + (getSender() != null ? getSender().hashCode() : 0);
         return result;
     }
 }

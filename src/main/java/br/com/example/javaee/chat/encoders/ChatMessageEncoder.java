@@ -21,10 +21,5 @@ public class ChatMessageEncoder implements Encoder.Text<ChatMessage> {
     public String encode(final ChatMessage chatMessage) throws EncodeException {
         Gson gson = new Gson();
         return gson.toJson(chatMessage);
-        /*return Json.createObjectBuilder()
-                .add("message", chatMessage.getMessage())
-                .add("sender", chatMessage.getSender())
-                //.add("received", chatMessage.getReceived().toString()).build()
-                .toString();*/
     }
 }
